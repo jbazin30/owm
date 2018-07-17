@@ -1,4 +1,8 @@
 <?php
+namespace entities;
+/**
+ * Genre les widgets à afficher
+ */
 class widget {
     private $widgets_x= [];
 

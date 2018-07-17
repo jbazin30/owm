@@ -1,0 +1,15 @@
+html {
+	font-size: 1em;
+}
+body {
+	width: 70%;
+	margin: 0 auto;
+	color: cornflowerblue;
+	font-size: 2rem;
+}
+p {
+	margin: 10px 0;
+}
+.ft-4{
+	font-size: 4rem;
+}

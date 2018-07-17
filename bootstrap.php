@@ -13,5 +13,5 @@ call_user_func(function () {
 
 
 // Load the api key.
-$ini = parse_ini_file('ApiKey.ini');
+$ini = parse_ini_file( './inits/ApiKey.ini');
 $myApiKey = $ini['api_key'];
