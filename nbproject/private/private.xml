@@ -3,7 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/owm/CurrentWeather.php</file>
+            <file>file:/C:/wamp/www/owm/admin.php</file>
+            <file>file:/C:/wamp/www/owm/apis/sec/filters.php</file>
+            <file>file:/C:/wamp/www/owm/index.php</file>
+            <file>file:/C:/wamp/www/owm/templates/admin.tpl</file>
+            <file>file:/C:/wamp/www/owm/widgets.json</file>
+            <file>file:/C:/wamp/www/owm/bootstrap.php</file>
+            <file>file:/C:/wamp/www/owm/mvc/apis/tpl.php</file>
+            <file>file:/C:/wamp/www/owm/entities/widget.php</file>
+            <file>file:/C:/wamp/www/owm/templates/header.tpl</file>
+            <file>file:/C:/wamp/www/owm/templates/footer.tpl</file>
+            <file>file:/C:/wamp/www/owm/mvc/abstracts/ctrl.php</file>
+            <file>file:/C:/wamp/www/owm/assets/style.css</file>
         </group>
     </open-files>
 </project-private>
