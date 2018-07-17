@@ -1,0 +1,17 @@
+{
+    "1": {
+        "city": "montpellier",
+        "lang": "fr",
+        "units": "metric"
+    },
+    "2": {
+        "city": "béziers",
+        "lang": "fr",
+        "units": "metric"
+    },
+    "3": {
+        "city": "strasbourg",
+        "lang": "fr",
+        "units": "metric"
+    }
+}
