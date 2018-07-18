@@ -44,7 +44,7 @@ final class index extends mvc\ctrl {
             foreach( $this->widgets_x as $widget) {
                 $weather = $this->owm->getWeather( $widget[ 'city'], $widget[ 'units'], $widget[ 'lang']);
                 $tpl->assign_block_vars( 'lst_wdg', [
-                    'WDG_TEMP'=> $weather->temperature->getFormatted(),
+                    'WDG_TEMP'=> round( $weather->temperature->getFormatted(), 1) . ' ' . $weather->temperature->getUnit(),
                     'WDG_ID'=> $weather->weather->id,
                     'WDG_CITY_NAME'=> $weather->city->name,
                 ]);

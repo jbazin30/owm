@@ -31,8 +31,8 @@
     },
     "8": {
         "city": "New York",
-        "lang": "en",
-        "units": "imperial"
+        "lang": "fr",
+        "units": "metric"
     },
     "9": {
         "city": "Sydney",
@@ -42,7 +42,7 @@
     "10": {
         "city": "Dubai",
         "lang": "fr",
-        "units": "imperial"
+        "units": "metric"
     },
     "11": {
         "city": "Nancy",
