@@ -58,10 +58,10 @@ $_result_tpl .=  '        </table>
                     <input name="wdg[' . ((isset($this->data['admin']['vars']['NEXT_IT'])) ? $this->data['admin']['vars']['NEXT_IT'] : $this->data['parent']['vars']['NEXT_IT'])  . '][city]">
                 </td>
                 <td>
-                    <input name="wdg[' . ((isset($this->data['admin']['vars']['NEXT_IT'])) ? $this->data['admin']['vars']['NEXT_IT'] : $this->data['parent']['vars']['NEXT_IT'])  . '][lang]">
+                    <input name="wdg[' . ((isset($this->data['admin']['vars']['NEXT_IT'])) ? $this->data['admin']['vars']['NEXT_IT'] : $this->data['parent']['vars']['NEXT_IT'])  . '][lang]" value="fr">
                 </td>
                 <td>
-                    <input name="wdg[' . ((isset($this->data['admin']['vars']['NEXT_IT'])) ? $this->data['admin']['vars']['NEXT_IT'] : $this->data['parent']['vars']['NEXT_IT'])  . '][units]">
+                    <input name="wdg[' . ((isset($this->data['admin']['vars']['NEXT_IT'])) ? $this->data['admin']['vars']['NEXT_IT'] : $this->data['parent']['vars']['NEXT_IT'])  . '][units]" value="metric">
                 </td>
             </tr>
         </table>
@@ -81,3 +81,4 @@ $_result_tpl .=  '
 $_result_tpl .=  '
 
 ';
+?>

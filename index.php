@@ -32,7 +32,7 @@ final class index extends mvc\ctrl {
         // on ajoute le template du header et on le parse avec les variables
         $tpl->set_filenames( [ 'header'=> 'header.tpl']);
 		$tpl->assign_vars([
-            'TITLE' => 'Administration',
+            'TITLE' => 'Accueil',
         ]);
 		$tpl->pparse( 'header');
 

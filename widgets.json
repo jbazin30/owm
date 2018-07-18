@@ -43,5 +43,10 @@
         "city": "Dubai",
         "lang": "fr",
         "units": "imperial"
+    },
+    "11": {
+        "city": "Nancy",
+        "lang": "fr",
+        "units": "metric"
     }
 }

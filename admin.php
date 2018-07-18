@@ -4,9 +4,9 @@ use mvc;
 use entities as ent;
 
 require_once './_settings/config.php';
-require_once './mvc/abstracts/ctrl.php';
-require_once './mvc/entities/widget.php';
-require_once './mvc/apis/tpl.php';
+require_once ROOT. 'mvc/abstracts/ctrl.php';
+require_once ROOT. 'mvc/entities/widget.php';
+require_once ROOT. 'mvc/apis/tpl.php';
 
 /**
  * Gestion de la page d'administration
@@ -83,6 +83,6 @@ final class admin extends mvc\ctrl {
             $this->tpl->create_block( 'file_not_saved');
             $this->tpl->pparse( 'admin');
         }
-	}
+    }
 }
 ( new admin())->run();

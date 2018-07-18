@@ -45,10 +45,10 @@
                     <input name="wdg[{NEXT_IT}][city]">
                 </td>
                 <td>
-                    <input name="wdg[{NEXT_IT}][lang]">
+                    <input name="wdg[{NEXT_IT}][lang]" value="fr">
                 </td>
                 <td>
-                    <input name="wdg[{NEXT_IT}][units]">
+                    <input name="wdg[{NEXT_IT}][units]" value="metric">
                 </td>
             </tr>
         </table>

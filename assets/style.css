@@ -43,7 +43,7 @@ input[type="submit"] {
     text-align: center;
 }
 .card {
-    min-width: 180px;
+    min-width: 200px;
     padding: 15px;
     margin: 20px;
     border-radius: 10px;

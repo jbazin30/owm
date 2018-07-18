@@ -1,10 +1,10 @@
 <!-- IFEXIST has_wdg -->
-<div>
+<div class="t_center">
     <!-- BEGIN lst_wdg -->
     <div class="inbl t_center card">
         <p>{lst_wdg.WDG_TEMP}</p>
         <p class="wi wi-owm-{lst_wdg.WDG_ID} ft-4"></p>
-        <p><img src="./assets/img/map_marker.png" style="height: 14px;">&nbsp;{lst_wdg.WDG_CITY_NAME}</p>
+        <p><img src="./assets/img/map_marker.png" style="height: 20px;">&nbsp;{lst_wdg.WDG_CITY_NAME}</p>
     </div>
     <!-- END lst_wdg -->
 </div>
