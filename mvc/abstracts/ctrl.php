@@ -6,32 +6,37 @@ require_once './apis/sec/filters.php';
 /**
  * Description of ctrl
  *
- * @author crash
+ * @author JB
  */
 abstract class ctrl {
 	protected $_filters= false;
+    protected static $_parsed_globals_types = [INPUT_GET, INPUT_POST, INPUT_ENV, INPUT_SERVER, INPUT_SESSION, INPUT_COOKIE];
 
-	public function __construct( array $_filters = []){
-        $this->_filters = $_filters;
+	public function __construct(){
+        call_user_func(function () {
+            if (!is_file($autoloadFile = ROOT. 'vendor/autoload.php')) {
+                throw new \RuntimeException('Did not find vendor/autoload.php. Did you run "composer install --dev"?');
+            }
+
+            /** @noinspection PhpIncludeInspection */
+            require_once $autoloadFile;
+
+            ini_set('date.timezone', 'Europe/Paris');
+        });
     }
 
 	/**
      * Analyse la requête transmise au serveur et appelle la méthode correspondante du contrôleur instancié.
-     * @param string  $_server_method méthode http forcée. (post|get|put|trace|option|delete|connect|head)
-     * @param array   $_request       tableau associatif contenant les données FILTRéES à utiliser pour la requête
      */
-    public function run( $_server_method= null, array $_request= []){
-		$f= $_server_method ? $_server_method : filter_input( INPUT_SERVER, 'REQUEST_METHOD');
-		switch( $f) {
-            case 'POST':
-				$_request= $_POST;
-				break;
-            case 'GET':
-				$_request= $_GET;
-				break;
-            default: return [];
+    public function run(){
+		$mode= filter_input( INPUT_SERVER, 'REQUEST_METHOD');
+        switch( $mode){
+            case 'POST': $request= $_POST; break;
+            case 'GET': $request= $_GET; break;
+            default: return false;
         }
-		if( method_exists( $this, $f)) return $this->$f( $_request);
+
+		if( method_exists( $this, $mode)) return $this->$mode( $request);
     }
 
     /**

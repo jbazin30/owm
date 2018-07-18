@@ -1,36 +1,60 @@
 <?php
 namespace controllers;
+use mvc;
 use entities as ent;
 use Cmfcmf\OpenWeatherMap;
-use Cmfcmf\OpenWeatherMap\Exception as OWMException;
 
-require_once './bootstrap.php';
-require_once './entities/widget.php';
+require_once './_settings/config.php';
+require_once ROOT. 'mvc/abstracts/ctrl.php';
+require_once ROOT. 'mvc/entities/widget.php';
+require_once ROOT. 'mvc/apis/tpl.php';
 
-$w= new ent\widget( 'widgets.json');
-$widgets_x= $w->get_all_widgets();
+final class index extends mvc\ctrl {
+    private $widgets_x;
+    private $owm;
 
-$owm = new OpenWeatherMap();
-$owm->setApiKey( $myApiKey);
-?>
-<!doctype html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
-        <link rel="stylesheet" href="./assets/style.css">
-        <link rel="stylesheet" href="./assets/weather-icons.css">
-    </head>
-    <body>
-<?php
-foreach( $widgets_x as $widget) {
-    $weather = $owm->getWeather( $widget[ 'city'], $widget[ 'units'], $widget[ 'lang']);
-    echo '<p>' . $weather->temperature->getFormatted() . '</p>';
-    echo '<p class="wi wi-owm-' . $weather->weather->id . ' ft-4"></p>';
-    echo '<p>' . $weather->city->name . '</p>';
-	echo '<hr>';
+    public function __construct(){
+        parent::__construct();
+        
+        $ini = parse_ini_file( './inits/ApiKey.ini');
+        $myApiKey = $ini['api_key'];
+        
+        $this->owm = new OpenWeatherMap();
+        $this->owm->setApiKey( $myApiKey);
+
+        $w= new ent\widget( 'widgets.json');
+        $this->widgets_x= $w->get_all_widgets();
+
+    }
+
+    public function get( array $_req){
+        $tpl= new tpl( './templates/', './cache/');
+
+        $tpl->set_filenames( [ 'header'=> 'header.tpl']);
+		$tpl->assign_vars([
+            'TITLE' => 'Administration',
+        ]);
+		$tpl->pparse( 'header');
+
+        $tpl->set_filenames( [ 'index'=> 'index.tpl']);
+
+        if( ! empty( $this->widgets_x)){
+            $tpl->create_block( 'has_wdg');
+            foreach( $this->widgets_x as $widget) {
+                $weather = $this->owm->getWeather( $widget[ 'city'], $widget[ 'units'], $widget[ 'lang']);
+                $tpl->assign_block_vars( 'lst_wdg', [
+                    'WDG_TEMP'=> $weather->temperature->getFormatted(),
+                    'WDG_ID'=> $weather->weather->id,
+                    'WDG_CITY_NAME'=> $weather->city->name,
+                ]);
+            }
+        } else{
+            $tpl->create_block( 'no_wdg');
+        }
+        $tpl->pparse( 'index');
+
+        $tpl->set_filenames( [ 'footer'=> 'footer.tpl']);
+		$tpl->pparse( 'footer');
+    }
 }
-?>
-    </body>
-</html>
+( new index())->run();

@@ -1,15 +1,101 @@
 html {
 	font-size: 1em;
+    background-color: #e1e5ed;
 }
 body {
 	width: 70%;
 	margin: 0 auto;
-	color: cornflowerblue;
-	font-size: 2rem;
+	color: #6495ed;
 }
 p {
 	margin: 10px 0;
 }
+fieldset,
+legend {
+    background-color: white;
+    border-radius: 5px;
+}
+legend {
+    padding: 5px;
+    border: 1px solid gray;
+}
+input,
+button {
+    padding: 3px 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    box-shadow: inset 1px 1px 2px 0px #656565;
+}
+button,
+input[type="submit"] {
+    cursor: pointer;
+}
+#main {
+    min-height: 500px;
+}
 .ft-4{
 	font-size: 4rem;
 }
+.inbl {
+    display: inline-block;
+}
+.t_center {
+    text-align: center;
+}
+.card {
+    min-width: 180px;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    box-shadow: 5px 5px 10px -5px #656565;
+    background-color: white;
+    font-size: 2rem;
+}
+.man { margin: 0; }
+.pan { padding: 0; }
+.mas { margin: 1em; }
+.mam { margin: 2em; }
+.mal { margin: 4em; }
+.pat { padding: 0.5em; }
+.pas { padding: 1em; }
+.pam { padding: 2em; }
+.pal { padding: 4em; }
+.mtn { margin-top: 0; }
+.mts { margin-top: 1em; }
+.mtm { margin-top: 2em; }
+.mtl { margin-top: 4em; }
+.mrn { margin-right: 0; }
+.mrt { margin-right: 0.5em; }
+.mrs { margin-right: 1em; }
+.mrm { margin-right: 2em; }
+.mrl { margin-right: 4em; }
+.mbn { margin-bottom: 0; }
+.mbs { margin-bottom: 1em; }
+.mbm { margin-bottom: 2em; }
+.mbl { margin-bottom: 4em; }
+.mln { margin-left: 0; }
+.mls { margin-left: 1em; }
+.mlm { margin-left: 2em; }
+.mll { margin-left: 4em; }
+.ptn { padding-top: 0; }
+.ptt { padding-top: 0.5em;}
+.pts { padding-top: 1em; }
+.ptism { padding-top: 1.5em; }
+.ptm { padding-top: 2em; }
+.ptl { padding-top: 4em; }
+.prn { padding-right: 0; }
+.prt { padding-right: 0.5em;}
+.prs { padding-right: 1em; }
+.prm { padding-right: 2em; }
+.prl { padding-right: 4em; }
+.pbn { padding-bottom: 0; }
+.pbt { padding-bottom: 0.5em;}
+.pbs { padding-bottom: 1em; }
+.pbm { padding-bottom: 2em; }
+.pbl { padding-bottom: 4em; }
+.pln { padding-left: 0; }
+.plt { padding-left: 0.5em;}
+.pls { padding-left: 1em; }
+.plm { padding-left: 2em; }
+.pll { padding-left: 4em; }

@@ -1,64 +1,67 @@
 <?php
 namespace controllers;
 use mvc;
-use sec;
 use entities as ent;
 
+require_once './_settings/config.php';
 require_once './mvc/abstracts/ctrl.php';
-require_once './entities/widget.php';
+require_once './mvc/entities/widget.php';
 require_once './mvc/apis/tpl.php';
 
 final class admin extends mvc\ctrl {
+    private $tpl;
 	public function __construct() {
-		/// Création des filtres
-        parent::__construct([
-            'POST' => [
-                'id'  => sec\filters::$is_int,
-                'city'  => sec\filters::$text,
-                'lang'  => sec\filters::$text,
-                'units'  => sec\filters::$text,
-            ],
-        ]);
+        parent::__construct();
+
+        $this->tpl= new tpl( './templates/', './cache/');
 	}
 
-	public function get( array $req){
+	public function get( array $_req){
 		$w= new ent\widget( 'widgets.json');
 		$widgets_x= $w->get_all_widgets();
 
-		$tpl= new tpl( './templates/', './cache/');
-		$tpl->set_filenames( [ 'header'=> 'header.tpl']);
-		$tpl->assign_vars([
-            'TITLE' => 'Adminstration',
+		
+		$this->tpl->set_filenames( [ 'header'=> 'header.tpl']);
+		$this->tpl->assign_vars([
+            'TITLE' => 'Administration',
         ]);
-		$tpl->pparse( 'header');
+		$this->tpl->pparse( 'header');
 
 
-		$tpl->set_filenames( [ 'admin'=> 'admin.tpl']);
+		$this->tpl->set_filenames( [ 'admin'=> 'admin.tpl']);
 		if( $widgets_x){
-			$tpl->create_block( 'lst_widget');
+			$this->tpl->create_block( 'lst_widget');
             foreach( $widgets_x as $key=> $res) {
-                $tpl->assign_block_vars( 'lst_wdg', [
+                $this->tpl->assign_block_vars( 'lst_wdg', [
                     'WDG_ID'=> $key,
                     'WDG_CITY'=> $res[ 'city'],
                     'WDG_LANG'=> $res[ 'lang'],
                     'WDG_UNITS'=> $res[ 'units'],
                 ]);
             }
+            $this->tpl->assign_vars( [
+                'NEXT_IT'=> max( array_keys( $widgets_x)) + 1
+            ]);
 		}
-		$tpl->pparse( 'admin');
+		$this->tpl->pparse( 'admin');
 
-		$tpl->set_filenames( [ 'footer'=> 'footer.tpl']);
-		$tpl->assign_vars([
-            'DATE' => date( 'd-m-Y'),
-        ]);
-		$tpl->pparse( 'footer');
+		$this->tpl->set_filenames( [ 'footer'=> 'footer.tpl']);
+		$this->tpl->pparse( 'footer');
 
 	}
 
-	public function post( array $req) {
-		echo '<pre>';
-		print_r( $req);
-		echo '</pre>';
+	public function post( array $_req) {
+        foreach( $_req[ 'wdg'] as $key=> $value) {
+            if( empty( $value[ 'city'])) unset(  $_req[ 'wdg'][ $key]);
+        }
+        $json= json_encode( $_req[ 'wdg'], JSON_PRETTY_PRINT);
+		if( file_put_contents( 'widgets.json', $json)){
+            header( 'Location: admin.php');
+        } else{
+            $this->tpl->set_filenames( [ 'admin'=> 'admin.tpl']);
+            $this->tpl->create_block( 'file_not_saved');
+            $this->tpl->pparse( 'admin');
+        }
 	}
 }
-(new admin())->run();
+( new admin())->run();

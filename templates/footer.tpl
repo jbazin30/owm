@@ -1,3 +1,3 @@
-<div>{DATE}</div>
+</div>
 </body>
 </html>

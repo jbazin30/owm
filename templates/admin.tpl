@@ -1,17 +1,59 @@
+<!-- IFEXIST file_not_saved -->
+<p>Le fichier ne s'est pas correctement enregistré.</p>
+<a href="admin.php">Cliquez-ici pour retourner au formulaire</a>
+<!-- ENDIF -->
 <!-- IFEXIST lst_widget -->
 <form action="admin.php" method="POST">
-<ul>
-	<!-- BEGIN lst_wdg -->
-	<li>
-		<div>
-			ID : <input value="{lst_wdg.WDG_ID}" name="id"><br>
-			CITY : <input value="{lst_wdg.WDG_CITY}" name="city"><br>
-			LANG : <input value="{lst_wdg.WDG_LANG}" name="lang"><br>
-			UNITS : <input value="{lst_wdg.WDG_UNITS}" name="units"><br>
-		</div>
-	</li>
-	<!-- END lst_wdg -->
-</ul>
-		<input value="SEND" type="submit">
+    <fieldset>
+        <legend>Edition</legend>
+        <table>
+            <tr>
+                <th>Ville</th>
+                <th>Langue</th>
+                <th>Unités</th>
+                <th>Action</th>
+            </tr>
+            <!-- BEGIN lst_wdg -->
+            <tr id="l{lst_wdg.ITERATION}">
+                <td>
+                    <input value="{lst_wdg.WDG_CITY}" name="wdg[{lst_wdg.WDG_ID}][city]">
+                </td>
+                <td>
+                    <input value="{lst_wdg.WDG_LANG}" name="wdg[{lst_wdg.WDG_ID}][lang]">
+                </td>
+                <td>
+                    <input value="{lst_wdg.WDG_UNITS}" name="wdg[{lst_wdg.WDG_ID}][units]">
+                </td>
+                <td>
+                    <button onclick="document.getElementById( 'l{lst_wdg.ITERATION}').remove();">Supp</button>
+                </td>
+            </tr>
+            <!-- END lst_wdg -->
+        </table>
+    </fieldset>
+    <fieldset class="mtm mbl">
+        <legend>Ajout</legend>
+        <table>
+            <tr>
+                <th>Ville</th>
+                <th>Langue</th>
+                <th>Unités</th>
+            </tr>
+            <tr>
+                <td>
+                    <input name="wdg[{NEXT_IT}][city]">
+                </td>
+                <td>
+                    <input name="wdg[{NEXT_IT}][lang]">
+                </td>
+                <td>
+                    <input name="wdg[{NEXT_IT}][units]">
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <p>
+        <input value="Sauvegarder" type="submit">&nbsp;<button onclick="window.reload();">Annuler</button>
+    </p>
 </form>
 <!-- ENDIF -->

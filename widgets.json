@@ -1,17 +1,37 @@
 {
-    "1": {
-        "city": "montpellier",
-        "lang": "fr",
-        "units": "metric"
-    },
     "2": {
-        "city": "béziers",
+        "city": "paris",
         "lang": "fr",
         "units": "metric"
     },
     "3": {
-        "city": "strasbourg",
+        "city": "montpellier",
         "lang": "fr",
         "units": "metric"
+    },
+    "4": {
+        "city": "B\u00e9ziers",
+        "lang": "fr",
+        "units": "metric"
+    },
+    "5": {
+        "city": "Marseille",
+        "lang": "fr",
+        "units": "metric"
+    },
+    "6": {
+        "city": "Nantes",
+        "lang": "fr",
+        "units": "metric"
+    },
+    "7": {
+        "city": "Dijon",
+        "lang": "fr",
+        "units": "metric"
+    },
+    "8": {
+        "city": "New York",
+        "lang": "en",
+        "units": "imperial"
     }
 }
