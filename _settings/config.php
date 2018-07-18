@@ -1,4 +1,7 @@
 <?php
 
-define('ROOT', './');
+/**
+ * Definition des constantes
+ */
+define( 'ROOT', './');
 

@@ -1,18 +1,14 @@
 <?php
 namespace mvc;
 
-require_once './apis/sec/filters.php';
-
 /**
- * Description of ctrl
- *
- * @author JB
+ * Contrôleur principal
  */
 abstract class ctrl {
 	protected $_filters= false;
-    protected static $_parsed_globals_types = [INPUT_GET, INPUT_POST, INPUT_ENV, INPUT_SERVER, INPUT_SESSION, INPUT_COOKIE];
 
 	public function __construct(){
+        // autoload des class
         call_user_func(function () {
             if (!is_file($autoloadFile = ROOT. 'vendor/autoload.php')) {
                 throw new \RuntimeException('Did not find vendor/autoload.php. Did you run "composer install --dev"?');
@@ -41,12 +37,13 @@ abstract class ctrl {
 
     /**
      * Méthode utilisée pour traiter les requêtes HTTP de type GET, doit être surchargée par la classe fille si elle est implémentée
-     * @param array $_request instance contenant les valeurs filtrées issues de la requête.
+     * @param array $_request instance contenant les valeurs issues de la requête.
      */
     public function get( array $_request){}
+    
     /**
      * Méthode utilisée pour traiter les requêtes HTTP de type POST, doit être surchargée par la classe fille si elle est implémentée
-     * @param array $_request instance contenant les valeurs filtrées issues de la requête.
+     * @param array $_request instance contenant les valeurs issues de la requête.
      */
     public function post( array $_request){}
 }

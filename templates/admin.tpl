@@ -2,6 +2,7 @@
 <p>Le fichier ne s'est pas correctement enregistré.</p>
 <a href="admin.php">Cliquez-ici pour retourner au formulaire</a>
 <!-- ENDIF -->
+
 <!-- IFEXIST lst_widget -->
 <form action="admin.php" method="POST">
     <fieldset>
@@ -56,4 +57,6 @@
         <input value="Sauvegarder" type="submit">&nbsp;<button onclick="window.reload();">Annuler</button>
     </p>
 </form>
+<!-- ELSE -->
+<p>Il n'y a pas de widget à afficher</p>
 <!-- ENDIF -->

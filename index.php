@@ -15,27 +15,28 @@ final class index extends mvc\ctrl {
 
     public function __construct(){
         parent::__construct();
-        
+
         $ini = parse_ini_file( './inits/ApiKey.ini');
         $myApiKey = $ini['api_key'];
-        
+
         $this->owm = new OpenWeatherMap();
         $this->owm->setApiKey( $myApiKey);
 
         $w= new ent\widget( 'widgets.json');
         $this->widgets_x= $w->get_all_widgets();
-
     }
 
     public function get( array $_req){
         $tpl= new tpl( './templates/', './cache/');
 
+        // on ajoute le template du header et on le parse avec les variables
         $tpl->set_filenames( [ 'header'=> 'header.tpl']);
 		$tpl->assign_vars([
             'TITLE' => 'Administration',
         ]);
 		$tpl->pparse( 'header');
 
+        // on ajoute le tpl de l'index que l'on parse avec les vars des widgets
         $tpl->set_filenames( [ 'index'=> 'index.tpl']);
 
         if( ! empty( $this->widgets_x)){
@@ -53,6 +54,7 @@ final class index extends mvc\ctrl {
         }
         $tpl->pparse( 'index');
 
+        // on parse le footer
         $tpl->set_filenames( [ 'footer'=> 'footer.tpl']);
 		$tpl->pparse( 'footer');
     }

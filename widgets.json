@@ -6,7 +6,7 @@
     },
     "3": {
         "city": "montpellier",
-        "lang": "fr",
+        "lang": "en",
         "units": "metric"
     },
     "4": {
@@ -32,6 +32,16 @@
     "8": {
         "city": "New York",
         "lang": "en",
+        "units": "imperial"
+    },
+    "9": {
+        "city": "Sydney",
+        "lang": "fr",
+        "units": "metric"
+    },
+    "10": {
+        "city": "Dubai",
+        "lang": "fr",
         "units": "imperial"
     }
 }
